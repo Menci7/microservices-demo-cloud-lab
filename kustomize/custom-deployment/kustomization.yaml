@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Use base config
+resources:
+- ../base
+
+# Remove load generator
+patches:
+- patch: |-
+    $patch: delete
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: loadgenerator
+  target:
+    kind: Deployment
+    name: loadgenerator
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: loadgenerator
+  target:
+    kind: Service
+    name: loadgenerator
+
+# Reduce CPU for 2 services
+- path: reduce-resources.yaml
