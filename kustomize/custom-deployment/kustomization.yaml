@@ -28,3 +28,6 @@ patches:
 
 # Reduce CPU for 2 services
 - path: reduce-resources.yaml
+
+# Expose frontend externally
+- path: frontend-loadbalancer.yaml
