@@ -1,0 +1,70 @@
+# Monitoring values
+prometheus:
+  prometheusSpec:
+    retention: 3d  # Keep metrics for 3 days
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 300m
+        memory: 512Mi
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 2Gi
+
+grafana:
+  adminPassword: admin.123
+  service:
+    type: LoadBalancer  # Expose Grafana externally
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# Node exporter
+nodeExporter:
+  enabled: true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+# cAdvisor metrics come from kubelet, already scraped by default
+kubelet:
+  enabled: true
+  serviceMonitor:
+    cAdvisor: true
+
+alertmanager:
+  enabled: false
+
+# Pod/deployment metrics
+kubeStateMetrics:
+  enabled: true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+prometheusOperator:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
