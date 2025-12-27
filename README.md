@@ -68,6 +68,8 @@ You can run the cleanup script when you are finished working with the cluster:
 ```bash
 ./cleanup-gcp.sh
 ```
+You will have to reply to prompts (y/n) confirming the deletion of resources. \
+You will need to wait until you see `=== Cleanup Complete ===` message which indicates that the cleanup process finished.
 
 ## Project Structure
 
@@ -82,9 +84,9 @@ You can run the cleanup script when you are finished working with the cluster:
 - **Components**: Prometheus, Grafana, Node Exporter, cAdvisor
 - **Changes**: Added monitoring services to the cluster.
 
-### Step 4: Automation Scripts
+### Automation Scripts
 - **Code**: `scripts/cleanup-gcp.sh`
-- **Chnages**: Help with automated cleanup of GCP resources
+- **Changes**: Help with automated cleanup of GCP resources
 
 ## Resource Requirements
 
